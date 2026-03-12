@@ -1,11 +1,13 @@
 # -*- mode: python ; coding: utf-8 -*-
-"""PyInstaller spec for EPUB to DOCX Converter."""
+"""PyInstaller spec for Bunny Book Breaker."""
 
 a = Analysis(
     ['run.py'],
     pathex=[],
     binaries=[],
-    datas=[],
+    datas=[
+        ('pics', 'pics'),  # Bundle bunny images
+    ],
     hiddenimports=[
         'ebooklib',
         'ebooklib.epub',
@@ -19,6 +21,10 @@ a = Analysis(
         'PIL.Image',
         'PIL.ImageFilter',
         'pytesseract',
+        'PyQt6',
+        'PyQt6.QtCore',
+        'PyQt6.QtGui',
+        'PyQt6.QtWidgets',
     ],
     hookspath=[],
     hooksconfig={},
@@ -34,12 +40,12 @@ exe = EXE(
     a.scripts,
     [],
     exclude_binaries=True,
-    name='epub2docx',
+    name='BunnyBookBreaker',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
     upx=True,
-    console=False,  # GUI app, no console window
+    console=False,
 )
 
 coll = COLLECT(
@@ -49,5 +55,5 @@ coll = COLLECT(
     strip=False,
     upx=True,
     upx_exclude=[],
-    name='epub2docx',
+    name='BunnyBookBreaker',
 )
